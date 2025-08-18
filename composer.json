@@ -1,5 +1,5 @@
 {
-    "name": "dachcom-digital/seo",
+    "name": "basecom/pimcore-seo",
     "type": "pimcore-bundle",
     "license": [
         "GPL-3.0-or-later",
