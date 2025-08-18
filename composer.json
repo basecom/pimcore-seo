@@ -46,8 +46,5 @@
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-symfony": "^2.0",
         "symplify/easy-coding-standard": "~12.2.0"
-    },
-    "suggest": {
-        "dachcom-digital/schema": "^3.0"
     }
 }
