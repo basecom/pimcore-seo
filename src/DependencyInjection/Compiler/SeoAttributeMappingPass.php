@@ -9,25 +9,24 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
-class SeoAttributeMappingPass implements CompilerPassInterface
+final class SeoAttributeMappingPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
-        // Optionales Feature-Flag wie bisher
+        // Feature-Flag
         if ($container->hasParameter('seo.persistence.doctrine.enabled')
             && !$container->getParameter('seo.persistence.doctrine.enabled')) {
             return;
         }
 
-        // Manager aus Parameter übernehmen (string|array) – fallback: 'default'
+        // use configured manager or default
         $managers = ['default'];
         if ($container->hasParameter('seo.persistence.doctrine.manager')) {
             $param = $container->getParameter('seo.persistence.doctrine.manager');
             $managers = is_array($param) ? $param : [$param];
         }
 
-        // Unser AttributeDriver: NUR $paths, KEIN 2. Argument!
-        $paths = [\dirname(__DIR__, 2) . '/src/Model']; // -> passe an, falls deine Entities woanders liegen
+        $paths = [\dirname(__DIR__, 2) . '/src/Model'];
         $driverDef = new Definition(AttributeDriver::class, [$paths]);
         $driverId  = 'seo.attribute_metadata_driver';
         $container->setDefinition($driverId, $driverDef);
@@ -42,7 +41,7 @@ class SeoAttributeMappingPass implements CompilerPassInterface
             }
 
             $chainDef = $container->getDefinition($chainId); /** @var Definition $chainDef */
-            // Namespace deiner Entities
+            // Entity Namespace
             $chainDef->addMethodCall('addDriver', [new Reference($driverId), 'SeoBundle\\Model']);
         }
     }
