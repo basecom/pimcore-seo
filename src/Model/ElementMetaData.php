@@ -13,13 +13,34 @@
 
 namespace SeoBundle\Model;
 
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity]
+#[ORM\Table(
+    name: 'seo_element_meta_data',
+    uniqueConstraints: [
+        new ORM\UniqueConstraint(
+            name: 'element_type_id_integrator',
+            columns: ['element_type', 'element_id', 'integrator', 'release_type']
+        )
+    ]
+)]
+
 class ElementMetaData implements ElementMetaDataInterface
 {
+    #[ORM\Id]
+    #[ORM\Column(name: 'id', type: 'integer')]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
     protected ?int $id = null;
+    #[ORM\Column(name: 'element_type', type: 'string', nullable: false)]
     protected string $elementType;
+    #[ORM\Column(name: 'element_id', type: 'integer', nullable: false)]
     protected int $elementId;
+    #[ORM\Column(name: 'integrator', type: 'string', nullable: false)]
     protected string $integrator;
+    #[ORM\Column(name: 'data', type: 'json', nullable: false)]
     protected array $data = [];
+    #[ORM\Column(name: 'release_type', type: 'string', nullable: false, options: ['default' => 'public'])]
     protected string $releaseType;
 
     public function setId(int $id): void
