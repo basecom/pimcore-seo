@@ -26,7 +26,7 @@ final class SeoAttributeMappingPass implements CompilerPassInterface
             $managers = is_array($param) ? $param : [$param];
         }
 
-        $paths = [\dirname(__DIR__, 2) . '/src/Model'];
+        $paths = [\dirname(__DIR__, 2) . '/Model'];
         $driverDef = new Definition(AttributeDriver::class, [$paths]);
         $driverId  = 'seo.attribute_metadata_driver';
         $container->setDefinition($driverId, $driverDef);
