@@ -41,8 +41,6 @@ class SeoBundle extends AbstractPimcoreBundle
 
     public function build(ContainerBuilder $container): void
     {
-        $this->configureDoctrineExtension($container);
-
         $container->addCompilerPass(new SeoAttributeMappingPass());
         $container->addCompilerPass(new IndexWorkerPass());
         $container->addCompilerPass(new ResourceProcessorPass());
@@ -65,21 +63,4 @@ class SeoBundle extends AbstractPimcoreBundle
         return self::PACKAGE_NAME;
     }
 
-    protected function configureDoctrineExtension(ContainerBuilder $container): void
-    {
-
-    }
-
-    protected function getNamespaceName(): string
-    {
-        return 'SeoBundle\Model';
-    }
-
-    protected function getModelPath(): string
-    {
-        return sprintf(
-            '%s/src/doctrine/Model',
-            $this->getPath()
-        );
-    }
 }
