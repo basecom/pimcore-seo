@@ -1,5 +1,21 @@
 # Upgrade Notes
 
+## Unreleased (Pimcore Studio)
+- **[BC BREAK]** The ExtJS/Classic editor UI has been removed. Pimcore 2026.1 dropped `PimcoreAdminBundle`,
+  so `SeoBundle\Controller\Admin\MetaDataController`, `SeoBundle\EventListener\Admin\*` and everything under
+  `public/js` are gone. The bundle now ships a Studio API instead of an editor; the editor itself lives in the
+  Studio UI plugin of the consuming project. See [Studio UI](docs/30_StudioUi.md).
+- **[BC BREAK]** The four `/admin/seo/meta-data/*` routes are replaced by three Studio API endpoints under
+  `%pimcore_studio_backend.url_prefix%/seo/meta-data`. Fetching the field definitions and the stored values is
+  now a single request per element.
+- **[BC BREAK]** `SeoBundle\EventListener\Admin\XliffListener` moved to `SeoBundle\EventListener\XliffListener`.
+- **[BC BREAK]** The config options `meta_data_integrator.integrator_rendering_type` and
+  `meta_data_integrator.documents.hide_pimcore_default_seo_panel` were removed. Both only steered the Classic UI,
+  and the latter referred to Pimcore's own SEO bundle, which was discontinued with 2026.1.
+- **[BC BREAK]** `pimcore/studio-backend-bundle` is now a hard requirement.
+- **[ENHANCEMENT]** Element permissions are now enforced: reading needs `view`, saving needs `save` on the element.
+  The Classic controller only required a backend login.
+
 ## 3.2.2
 - [BUGFIX] Xliff Export: pass null values as empty string
 

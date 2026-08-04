@@ -1,0 +1,20 @@
+seo_tag_description: SEO meta data of documents and data objects
+
+seo_meta_data_configuration_summary: Get the SEO meta data of an element
+seo_meta_data_configuration_description: |
+  Returns the enabled integrators with their form schema, the locales the current user may edit
+  and the stored values of one element. An empty integrator list means SEO meta data is not
+  enabled for this element. Requires view permission on the element.
+seo_meta_data_configuration_success_response: SEO meta data configuration
+
+seo_meta_data_save_summary: Save the SEO meta data of an element
+seo_meta_data_save_description: |
+  Persists the values of the given integrators, either published or as draft. Integrators that
+  are left out of the payload keep their stored values. Requires save permission on the element.
+seo_meta_data_save_success_response: SEO meta data saved
+
+seo_meta_data_preview_summary: Render the live preview of one integrator
+seo_meta_data_preview_description: |
+  Renders the search result or social card preview of a single integrator as a standalone HTML
+  document, based on values that are not persisted yet. Requires view permission on the element.
+seo_meta_data_preview_success_response: Preview HTML document

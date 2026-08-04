@@ -58,7 +58,6 @@ class SeoExtension extends Extension implements PrependExtensionInterface
         $enabledThirdPartyConfigs = [];
 
         $xliffBundleEnabled = $container->hasExtension('pimcore_xliff');
-        $pimcoreSeoBundleEnabled = $container->hasExtension('pimcore_seo');
         $newsBundleEnabled = $container->hasExtension('news');
         $coreShopSeoBundleEnabled = $container->hasExtension('core_shop_seo');
 
@@ -80,10 +79,6 @@ class SeoExtension extends Extension implements PrependExtensionInterface
 
         if ($xliffBundleEnabled) {
             $enabledThirdPartyConfigs['pimcore_xliff'] = 'services/third_party/pimcore_xliff.yaml';
-        }
-
-        if ($pimcoreSeoBundleEnabled) {
-            $enabledThirdPartyConfigs['pimcore_seo'] = 'services/third_party/pimcore_seo.yaml';
         }
 
         foreach ($enabledThirdPartyConfigs as $enabledThirdPartyConfig) {

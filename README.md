@@ -8,28 +8,24 @@
 The last SEO Bundle for pimcore you'll ever need!
 
 - Create title, description and meta tags (OG-Tags, Twitter-Cards) for documents **and** objects!
-- Shipped with a save and user-friendly editor with multi locale support!
+- Ships a Studio API for the editor UI, with multi locale support!
 - Enjoy live previews of each social channel!
 - Super smooth and simple PHP-API to update meta information of documents or objects!
 - Submit content data to search engines like Google, Bing, DuckDuckGo in real time!
 - Fully backwards compatible if you're going to install this bundle within an existing pimcore instance!
 
-## Documents
-![image](https://user-images.githubusercontent.com/700119/79641134-db71cd00-8195-11ea-81c4-e2bbdb7073f5.png)
-
-## Objects
-![image](https://user-images.githubusercontent.com/700119/79641347-39eb7b00-8197-11ea-9ef7-9ec41f8c2057.png)
-
-## Objects | Tabbed View
-![image](https://user-images.githubusercontent.com/700119/79804274-0578ea00-8364-11ea-8780-3cd8b2d72376.png)
+## Editor UI
+Since Pimcore 2026.1 removed the Classic backend, this bundle no longer ships an editor. It provides a Studio
+API instead, which a Studio UI module in your project renders. See [Studio UI](docs/30_StudioUi.md).
 
 ### Release Plan
 
-| Release | Supported Pimcore Versions | Supported Symfony Versions | Release Date | Maintained     | Branch |
-|---------|----------------------------|----------------------------|--------------|----------------|--------|
-| **3.x** | `11.0`                     | `6.2`                      | 30.08.2023   | Feature Branch | master |
-| **2.x** | `10.1` - `10.6`            | `5.4`                      | 14.10.2021   | Unsupported    | 2.x    |
-| **1.x** | `6.0` - `6.9`              | `3.4`, `^4.4`              | 27.04.2020   | Unsupported    | 1.x    |
+| Release | Supported Pimcore Versions | Release Date | Maintained     | Branch |
+|---------|----------------------------|--------------|----------------|--------|
+| **4.x** | `2026.2`                   | -            | Feature Branch | master |
+| **3.x** | `11.0`                     | 30.08.2023   | Unsupported    | -      |
+| **2.x** | `10.1` - `10.6`            | 14.10.2021   | Unsupported    | 2.x    |
+| **1.x** | `6.0` - `6.9`              | 27.04.2020   | Unsupported    | 1.x    |
 
 
 ## Installation

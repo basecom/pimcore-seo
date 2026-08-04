@@ -21,15 +21,6 @@ seo:
 
 This will add an additional `SEO` tab on your documents and objects of type `MyObjectClass`.
 
-If you want to render integrator as `fieldset` instead of `tab` (default), you need to change it like that:
-
-```yaml
-seo:
-    meta_data_configuration:
-        meta_data_integrator:
-            integrator_rendering_type: 'fieldset'
-```
-
 Read more about integrators and how to use them [here](./MetaData/10_Integrator.md).
 
 ## Extractors
@@ -43,6 +34,7 @@ Read more about integrators and how to use them [here](./MetaData/20_Extractors.
   - [Twitter Card Integrator](./MetaData/Integrator/12_TwitterCardIntegrator.md)
   - [Schema Integrator](./MetaData/Integrator/13_SchemaIntegrator.md)
   - [HTML-Tag Integrator](./MetaData/Integrator/14_HtmlTagIntegrator.md)
+- [Studio UI](./30_StudioUi.md)
 - [Extractors](./MetaData/20_Extractors.md)
   - [Custom Extractor](./MetaData/Extractor/10_CustomExtractor.md)
   
@@ -57,7 +49,6 @@ seo:
         meta_data_integrator:
             documents:
                 enabled: true
-                hide_pimcore_default_seo_panel: true
             objects:
                 enabled: true
                 data_classes:

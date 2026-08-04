@@ -46,20 +46,7 @@ On a special route - mostly a static route - you need to inform the meta provide
 {% endblock content %}
 ```
 
-## Deprecate Pimcore SEO Features
-With this bundle, you may don't want to use the default SEO panel in pimcore documents. 
-To disable the panel in backend you need to set `hide_pimcore_default_seo_panel` to `true`.
-
-> **Note**: Already populated fields like title, description and all meta fields will automatically moved to the seo bundle context. No migration needed! 
-
-```yaml
-seo:
-    meta_data_configuration:
-        meta_data_integrator:
-            documents:
-                enabled: true
-                hide_pimcore_default_seo_panel: true
-```
+> **Note**: Already populated document fields like title and description are automatically moved to the seo bundle context. No migration needed!
 
 ## Next Steps
 Learn more about metadata or the index notification.
@@ -78,7 +65,6 @@ seo:
         meta_data_integrator:
             documents:
                 enabled: true
-                hide_pimcore_default_seo_panel: true
             objects:
                 enabled: true
                 data_classes:
