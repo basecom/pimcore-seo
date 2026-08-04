@@ -12,7 +12,11 @@
 - **[BC BREAK]** The config options `meta_data_integrator.integrator_rendering_type` and
   `meta_data_integrator.documents.hide_pimcore_default_seo_panel` were removed. Both only steered the Classic UI,
   and the latter referred to Pimcore's own SEO bundle, which was discontinued with 2026.1.
-- **[BC BREAK]** `pimcore/studio-backend-bundle` is now a hard requirement.
+- **[BC BREAK]** `pimcore/pimcore` is now `~2026.2.0` only, and `pimcore/studio-backend-bundle` is a hard
+  requirement. Pimcore 12 support ends here: it still has Classic Admin, so the removed ExtJS editor is the
+  editor there, and its `studio-backend-bundle` is the `0.13.x` line rather than `2026.x`. Pimcore 12 projects
+  stay on the `3.x` branch and pin `^3.3` — the constraint fails loudly instead of silently taking their editor
+  away.
 - **[ENHANCEMENT]** Element permissions are now enforced: reading needs `view`, saving needs `save` on the element.
   The Classic controller only required a backend login.
 

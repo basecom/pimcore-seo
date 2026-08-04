@@ -23,9 +23,13 @@ API instead, which a Studio UI module in your project renders. See [Studio UI](d
 | Release | Supported Pimcore Versions | Release Date | Maintained     | Branch |
 |---------|----------------------------|--------------|----------------|--------|
 | **4.x** | `2026.2`                   | -            | Feature Branch | master |
-| **3.x** | `11.0`                     | 30.08.2023   | Unsupported    | -      |
+| **3.x** | `11.0`, `12.x`             | 30.08.2023   | Bugfixes       | 3.x    |
 | **2.x** | `10.1` - `10.6`            | 14.10.2021   | Unsupported    | 2.x    |
 | **1.x** | `6.0` - `6.9`              | 27.04.2020   | Unsupported    | 1.x    |
+
+`4.x` drops the ExtJS editor, because Pimcore 2026.1 removed the Classic backend it was built on. Pimcore 12
+still has Classic Admin, so projects that want to keep the shipped editor stay on `3.x` (`v3.3.0` is the last
+release with it). Pin `^3.3` instead of tracking `dev-master`.
 
 
 ## Installation
