@@ -11,7 +11,6 @@ seo.field.property: Property
 seo.field.content: Content
 seo.field.type: Type
 
-seo.action.save: Save SEO data
 seo.action.remove: Remove
 seo.action.add-property: Add property
 seo.action.add-preset: Add preset
