@@ -8,7 +8,7 @@
 The last SEO Bundle for pimcore you'll ever need!
 
 - Create title, description and meta tags (OG-Tags, Twitter-Cards) for documents **and** objects!
-- Ships a Studio API for the editor UI, with multi locale support!
+- Ships a Studio API for the editor UI, with multi-locale support!
 - Enjoy live previews of each social channel!
 - Super smooth and simple PHP-API to update meta information of documents or objects!
 - Submit content data to search engines like Google, Bing, DuckDuckGo in real time!
@@ -36,7 +36,7 @@ release with it). Pin `^3.3` instead of tracking `dev-master`.
 
 ```json
 "require" : {
-    "dachcom-digital/seo" : "~3.2.0",
+    "basecom/pimcore-seo" : "^4.0",
 }
 ```
 

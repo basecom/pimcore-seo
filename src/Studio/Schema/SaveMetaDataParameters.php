@@ -20,10 +20,10 @@ use OpenApi\Attributes\Schema;
 use SeoBundle\Model\ElementMetaDataInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
+// `integratorValues` is not required: omitting it defaults to an empty array, which writes nothing.
 #[Schema(
     schema: 'SeoSaveMetaDataParameters',
     title: 'SEO Save Meta Data Parameters',
-    required: ['integratorValues'],
     type: 'object'
 )]
 final readonly class SaveMetaDataParameters

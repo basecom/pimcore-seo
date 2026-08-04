@@ -3,9 +3,9 @@ There are two important things within the metadata section: integrators and extr
 
 ## Integrators
 Integrator allows you to define metadata in backend context. There are several pre-configured integrators, but it's also possible to add your own.
-It's possible to enable a dedicated SEO panel on documents and/or objects.
+It's possible to enable metadata editing on documents and/or objects.
 
-Enable the SEO panel on documents/objects:
+Enable metadata on documents/objects:
 
 ```yaml
 seo:
@@ -19,7 +19,9 @@ seo:
                     - MyObjectClass
 ```
 
-This will add an additional `SEO` tab on your documents and objects of type `MyObjectClass`.
+The enabled integrators are what the [Studio API](./30_StudioUi.md) reports as the form schema for an
+element, so this configuration decides which fields the editor renders and which elements it covers at all.
+Since 4.x the bundle no longer ships the editor itself — a Studio UI module in your project does.
 
 Read more about integrators and how to use them [here](./MetaData/10_Integrator.md).
 

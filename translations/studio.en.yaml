@@ -20,7 +20,7 @@ seo.action.add-html-tag: Add HTML tag
 seo.preview.title: Preview
 
 seo.schema.usage-note: 'Wrap each block in <script type="application/ld+json"> … </script>.'
-seo.schema.dynamic-note: Structured data is also added automatically for
+seo.schema.dynamic-note: 'Structured data is also added automatically for {{types}}.'
 seo.html-tag.caution-note: These tags are rendered into the page head unchanged. Only add markup you trust.
 
 seo.not-enabled: SEO meta data is not enabled for this element.

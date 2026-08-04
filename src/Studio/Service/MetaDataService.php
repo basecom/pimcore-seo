@@ -78,9 +78,15 @@ final readonly class MetaDataService implements MetaDataServiceInterface
         $integratorValues = $parameters->getIntegratorValues();
 
         // validate the whole payload first, a rejected integrator must not leave half of it persisted
-        foreach (array_keys($integratorValues) as $integratorName) {
+        foreach ($integratorValues as $integratorName => $integratorData) {
             if (!in_array($integratorName, $enabledIntegratorNames, true)) {
                 throw new InvalidArgumentException(sprintf('Meta data integrator "%s" is not enabled', $integratorName));
+            }
+
+            // Values are stored with merging disabled, so coercing a malformed payload to an empty
+            // array would delete everything held for that integrator instead of rejecting the call.
+            if (!is_array($integratorData)) {
+                throw new InvalidArgumentException(sprintf('Values for meta data integrator "%s" must be an array, %s given', $integratorName, get_debug_type($integratorData)));
             }
         }
 
@@ -89,7 +95,7 @@ final readonly class MetaDataService implements MetaDataServiceInterface
                 $elementType,
                 $elementId,
                 $integratorName,
-                is_array($integratorData) ? $integratorData : [],
+                $integratorData,
                 false,
                 $parameters->getReleaseType()
             );

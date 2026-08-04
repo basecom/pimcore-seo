@@ -62,7 +62,7 @@ pimcore_studio_backend:
 
 `task` is `publish` (default) or `draft`. Integrators left out of `integratorValues` keep their stored values.
 
-> **Locale aware values are replaced, not merged.** Send every locale you loaded, not just the one being
+> **Locale-aware values are replaced, not merged.** Send every locale you loaded, not just the one being
 > edited — a locale that is missing from the payload is dropped. Send `{"locale": "de", "value": null}` to
 > clear a single locale on purpose.
 
