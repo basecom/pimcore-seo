@@ -14,6 +14,10 @@ Requirements: the project has a Studio UI plugin (module federation remote) with
 `@pimcore/studio-ui-bundle` pinned to the same minor as the installed composer bundles, plus `lodash` and
 `i18next` (both already pulled in by the SDK setup).
 
+The path depths below assume the common layout `<project>/assets/studio-ui/rsbuild.config.ts` with the
+plugin sources in `<project>/assets/studio-ui/js/src/` and composer's `vendor/` at the project root —
+adjust each relative path to where the file actually sits in your project.
+
 1. Let the plugin build compile sources from the vendor directory. rsbuild only transpiles the project
    root by default, so include the bundle path (`rsbuild.config.ts`):
 

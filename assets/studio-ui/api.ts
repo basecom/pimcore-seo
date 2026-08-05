@@ -1,19 +1,21 @@
 import { isNil, isString } from 'lodash'
 import i18next from 'i18next'
+import { appConfig } from '@pimcore/studio-ui-bundle/app'
 import { trackError, ApiError, GeneralError } from '@pimcore/studio-ui-bundle/modules/app'
 
 /**
  * Endpoints are provided by basecom/pimcore-seo (SeoBundle\Controller\Studio\MetaData).
- * The bundle owns the data model, this module only renders it.
+ * The bundle owns the data model, this module only renders it. The prefix follows
+ * `pimcore_studio_backend.url_prefix`, so a project that reconfigures it stays functional.
  */
-const BASE_URL = '/pimcore-studio/api/seo/meta-data'
+const BASE_URL = `${appConfig.apiPrefix}/seo/meta-data`
 
 export type SeoElementType = 'object' | 'document'
 
 /** `[key, label, xliffExportAware]` */
 export type SeoPropertyDefinition = [string, string, boolean]
 
-/** `[tag, label]` */
+/** `[label, value]` — the order `typeOptions` consumes. */
 export type SeoTypeDefinition = [string, string]
 
 /** `[template, label]` */

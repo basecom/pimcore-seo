@@ -24,6 +24,7 @@ seo.schema.dynamic-note: 'Structured data is also added automatically for {{type
 seo.html-tag.caution-note: These tags are rendered into the page head unchanged. Only add markup you trust.
 
 seo.not-enabled: SEO meta data is not enabled for this element.
+seo.no-editable-locale: You have no editable language on this element, so SEO meta data is read-only.
 seo.draft-note: Showing unpublished values.
 seo.save.success: SEO data saved
 

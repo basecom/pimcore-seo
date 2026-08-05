@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { isEmpty, isNil } from 'lodash'
 import { eventBus, eventTypes } from '@pimcore/studio-ui-bundle'
 import {
@@ -50,6 +50,10 @@ export const SeoTab = (): React.JSX.Element => {
   const [configuration, setConfiguration] = useState<SeoMetaDataConfiguration | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [loadError, setLoadError] = useState<string | null>(null)
+  // Reloads race: switching elements re-creates `load` while a request is in flight, and saving
+  // triggers another. Only the newest request may write, or a stale payload lands in the form
+  // and the next save persists it to the wrong element.
+  const loadGeneration = useRef(0)
 
   const seoElementType = toSeoElementType(elementType)
 
@@ -58,18 +62,30 @@ export const SeoTab = (): React.JSX.Element => {
       return
     }
 
+    const generation = ++loadGeneration.current
     setIsLoading(true)
 
     try {
       const loaded = await fetchMetaDataConfiguration(seoElementType, id)
+
+      if (generation !== loadGeneration.current) {
+        return
+      }
+
       setConfiguration(loaded)
       form.resetFields()
       form.setFieldsValue(loaded.data)
       setLoadError(null)
     } catch (error: unknown) {
+      if (generation !== loadGeneration.current) {
+        return
+      }
+
       setLoadError(error instanceof Error ? error.message : t('seo.error.load'))
     } finally {
-      setIsLoading(false)
+      if (generation === loadGeneration.current) {
+        setIsLoading(false)
+      }
     }
   }, [form, id, seoElementType, t])
 
@@ -136,17 +152,19 @@ export const SeoTab = (): React.JSX.Element => {
     (integrator) => integrator.config.useLocalizedFields === true
   ) === true
 
+  const hasEditableLocale = (configuration?.availableLocales.length ?? 0) > 0
+
   /**
    * Classes without localized attributes do not get the footer language switcher by default, but
    * SEO titles are localized regardless — so ask for it, the same way the localized field controls do.
    */
   useEffect(() => {
-    if (!localizedIntegrator || hasLocalizedFields) {
+    if (!localizedIntegrator || !hasEditableLocale || hasLocalizedFields) {
       return
     }
 
     setHasLocalizedFields(true)
-  }, [hasLocalizedFields, localizedIntegrator, setHasLocalizedFields])
+  }, [hasEditableLocale, hasLocalizedFields, localizedIntegrator, setHasLocalizedFields])
 
   if (isNil(seoElementType)) {
     return (
@@ -189,8 +207,12 @@ export const SeoTab = (): React.JSX.Element => {
     )
   }
 
-  const canSave = checkElementPermission(dataObject?.permissions, 'save') ||
-    checkElementPermission(dataObject?.permissions, 'publish')
+  // A user without any editable language would write plain strings where the backend expects
+  // locale rows — which it answers by deleting the stored entry. Read-only is the safe mode.
+  const missingEditableLocale = localizedIntegrator && !hasEditableLocale
+
+  const canSave = (checkElementPermission(dataObject?.permissions, 'save') ||
+    checkElementPermission(dataObject?.permissions, 'publish')) && !missingEditableLocale
 
   // The footer switcher walks the object's languages, which is a superset of the SEO locales only
   // when a language was added after the SEO configuration — fall back instead of writing nowhere.
@@ -206,6 +228,13 @@ export const SeoTab = (): React.JSX.Element => {
       overflow={ { x: 'hidden', y: 'auto' } }
       padded
     >
+      { missingEditableLocale && (
+        <Alert
+          message={ t('seo.no-editable-locale') }
+          type="warning"
+        />
+      ) }
+
       { configuration.draft && (
         <Alert
           message={ t('seo.draft-note') }
