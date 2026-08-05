@@ -109,7 +109,16 @@ final class PreviewController extends AbstractApiController
             $this->decodeData($data)
         );
 
-        return $this->render($previewData['path'], $previewData['params']);
+        $response = $this->render($previewData['path'], $previewData['params']);
+
+        // The document renders metadata the editor has not published yet, and it arrives in the query
+        // string because an `<iframe src>` cannot POST. Keep it out of shared and browser caches at
+        // least; the URL itself still reaches access logs, which is why the payload is limited to the
+        // fields being previewed. Moving it out of the URL needs a short-lived server-side token.
+        $response->setPrivate();
+        $response->headers->addCacheControlDirective('no-store');
+
+        return $response;
     }
 
     /**

@@ -73,6 +73,11 @@ document meant for an `<iframe src>`, which is why the payload travels in the qu
 whose config says `hasLivePreview: true` have one; `livePreviewTemplates` lists the available templates as
 `[value, label]`.
 
+> `data` carries metadata the editor has not published yet, and a query string reaches access logs. The
+> response is sent `private, no-store` so it stays out of browser and proxy caches, and `data` should carry
+> only the fields being previewed — keep that in mind before extending it. Getting the payload out of the URL
+> entirely needs a short-lived server-side preview token, because an iframe cannot issue a POST.
+
 The preview expects flat scalars for the locale being previewed, not the stored shape:
 
 | Integrator | `data` |
