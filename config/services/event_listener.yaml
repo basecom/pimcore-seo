@@ -5,10 +5,6 @@ services:
         autoconfigure: true
         public: false
 
-    SeoBundle\EventListener\Admin\AssetListener:
-        tags:
-            - { name: kernel.event_subscriber }
-
     SeoBundle\EventListener\PimcoreElementListener:
         arguments:
             $enabled: '%seo.index.pimcore_element_watcher.enabled%'

@@ -11,7 +11,7 @@
  * @license    GPLv3 and DCL
  */
 
-namespace SeoBundle\EventListener\Admin;
+namespace SeoBundle\EventListener;
 
 use Pimcore\Bundle\XliffBundle\Event\Model\TranslationXliffEvent;
 use Pimcore\Bundle\XliffBundle\Event\XliffEvents;

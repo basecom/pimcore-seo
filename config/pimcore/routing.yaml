@@ -1,15 +1,8 @@
-# Admin Routes
-seo.controller.admin.meta_data.get_meta_definitions:
-    path: /admin/seo/meta-data/get-meta-definitions
-    defaults: { _controller: SeoBundle\Controller\Admin\MetaDataController::getMetaDataDefinitionsAction }
-seo.controller.admin.meta_data.get_element_meta_data_configuration:
-    path: /admin/seo/meta-data/get-element-meta-data-configuration
-    defaults: { _controller: SeoBundle\Controller\Admin\MetaDataController::getElementMetaDataConfigurationAction }
-seo.controller.admin.meta_data.set_element_meta_data_configuration:
-    methods: [POST]
-    path: /admin/seo/meta-data/set-element-meta-data-configuration
-    defaults: { _controller: SeoBundle\Controller\Admin\MetaDataController::setElementMetaDataConfigurationAction }
-seo.controller.admin.meta_data.generate_meta_data_preview:
-    methods: [GET]
-    path: /admin/seo/meta-data/generate-meta-data-preview
-    defaults: { _controller: SeoBundle\Controller\Admin\MetaDataController::generateMetaDataPreviewAction }
+# Studio API routes -> /pimcore-studio/api/seo/...
+# The prefix has to stay in sync with SeoBundle\Studio\OpenApi\Config\Prefix::BUNDLE.
+seo.studio_api:
+    resource: '../../src/Controller/Studio/'
+    type: attribute
+    prefix: '%pimcore_studio_backend.url_prefix%/seo'
+    options:
+        expose: true

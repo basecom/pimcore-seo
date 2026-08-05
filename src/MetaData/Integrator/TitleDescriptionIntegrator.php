@@ -108,11 +108,11 @@ class TitleDescriptionIntegrator extends AbstractIntegrator implements Integrato
     {
         $arrayModifier = new ArrayHelper();
 
-        // nothing to merge, just clean up
+        // nothing to merge, just clean up. Both fields are optional in the request payload.
         if (!is_array($previousData) || count($previousData) === 0) {
             return [
-                'title'       => $arrayModifier->cleanEmptyLocaleRows($data['title']),
-                'description' => $arrayModifier->cleanEmptyLocaleRows($data['description'])
+                'title'       => $arrayModifier->cleanEmptyLocaleRows(is_array($data['title'] ?? null) ? $data['title'] : []),
+                'description' => $arrayModifier->cleanEmptyLocaleRows(is_array($data['description'] ?? null) ? $data['description'] : [])
             ];
         }
 

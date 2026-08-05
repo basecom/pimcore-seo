@@ -3,9 +3,9 @@ There are two important things within the metadata section: integrators and extr
 
 ## Integrators
 Integrator allows you to define metadata in backend context. There are several pre-configured integrators, but it's also possible to add your own.
-It's possible to enable a dedicated SEO panel on documents and/or objects.
+It's possible to enable metadata editing on documents and/or objects.
 
-Enable the SEO panel on documents/objects:
+Enable metadata on documents/objects:
 
 ```yaml
 seo:
@@ -19,16 +19,9 @@ seo:
                     - MyObjectClass
 ```
 
-This will add an additional `SEO` tab on your documents and objects of type `MyObjectClass`.
-
-If you want to render integrator as `fieldset` instead of `tab` (default), you need to change it like that:
-
-```yaml
-seo:
-    meta_data_configuration:
-        meta_data_integrator:
-            integrator_rendering_type: 'fieldset'
-```
+The enabled integrators are what the [Studio API](./30_StudioUi.md) reports as the form schema for an
+element, so this configuration decides which fields the editor renders and which elements it covers at all.
+Since 4.x the bundle no longer ships the editor itself — a Studio UI module in your project does.
 
 Read more about integrators and how to use them [here](./MetaData/10_Integrator.md).
 
@@ -43,6 +36,7 @@ Read more about integrators and how to use them [here](./MetaData/20_Extractors.
   - [Twitter Card Integrator](./MetaData/Integrator/12_TwitterCardIntegrator.md)
   - [Schema Integrator](./MetaData/Integrator/13_SchemaIntegrator.md)
   - [HTML-Tag Integrator](./MetaData/Integrator/14_HtmlTagIntegrator.md)
+- [Studio UI](./30_StudioUi.md)
 - [Extractors](./MetaData/20_Extractors.md)
   - [Custom Extractor](./MetaData/Extractor/10_CustomExtractor.md)
   
@@ -57,7 +51,6 @@ seo:
         meta_data_integrator:
             documents:
                 enabled: true
-                hide_pimcore_default_seo_panel: true
             objects:
                 enabled: true
                 data_classes:

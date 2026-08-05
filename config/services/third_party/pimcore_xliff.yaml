@@ -5,6 +5,6 @@ services:
         autoconfigure: true
         public: false
 
-    SeoBundle\EventListener\Admin\XliffListener:
+    SeoBundle\EventListener\XliffListener:
         tags:
             - { name: kernel.event_subscriber }

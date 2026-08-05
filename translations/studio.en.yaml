@@ -1,0 +1,33 @@
+seo.integrator.title_description: Title & description
+seo.integrator.open_graph: Open Graph
+seo.integrator.twitter_card: Twitter card
+seo.integrator.schema: Structured data (JSON-LD)
+seo.integrator.html_tag: HTML tags
+seo.integrator.unsupported: 'No editor is available for the integrator "{{integrator}}".'
+
+seo.field.title: Title
+seo.field.description: Description
+seo.field.property: Property
+seo.field.content: Content
+seo.field.type: Type
+
+seo.action.remove: Remove
+seo.action.add-property: Add property
+seo.action.add-preset: Add preset
+seo.action.add-schema: Add JSON-LD block
+seo.action.add-html-tag: Add HTML tag
+
+seo.preview.title: Preview
+
+seo.schema.usage-note: 'Wrap each block in <script type="application/ld+json"> … </script>.'
+seo.schema.dynamic-note: 'Structured data is also added automatically for {{types}}.'
+seo.html-tag.caution-note: These tags are rendered into the page head unchanged. Only add markup you trust.
+
+seo.not-enabled: SEO meta data is not enabled for this element.
+seo.draft-note: Showing unpublished values.
+seo.save.success: SEO data saved
+
+seo.error.network: SEO data could not be loaded or saved due to a network error
+seo.error.load: SEO data could not be loaded
+seo.error.save: SEO data could not be saved
+seo.error.unsupported-element: SEO meta data is not available for this element type.

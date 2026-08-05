@@ -14,16 +14,6 @@ seo:
                 -   integrator_name: schema
 ```
 
-# Integration Rendering Types
-If you want to render integrator as `fieldset` instead of `tab` (default), you need to change it like that:
-
-```yaml
-seo:
-    meta_data_configuration:
-        meta_data_integrator:
-            integrator_rendering_type: 'fieldset'
-```
-
 ## Available Integrators
 
 - [Title & Description Integrator](./Integrator/10_TitleDescriptionIntegrator.md)

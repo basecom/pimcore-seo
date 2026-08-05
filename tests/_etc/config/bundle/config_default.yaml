@@ -3,10 +3,8 @@ seo:
         meta_data_provider:
             auto_detect_documents: true
         meta_data_integrator:
-            integrator_rendering_type: 'tab'
             documents:
                 enabled: true
-                hide_pimcore_default_seo_panel: true
             objects:
                 enabled: true
                 data_classes:
