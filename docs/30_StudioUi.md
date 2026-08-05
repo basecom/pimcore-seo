@@ -1,12 +1,44 @@
 # Studio UI
 
 Up to Pimcore 2026.0 this bundle shipped an ExtJS editor under `public/js`. Pimcore 2026.1 removed
-`PimcoreAdminBundle`, so that editor is gone. The bundle now ships a **Studio API** only; the editor is a
-Studio UI module in the project that consumes the bundle.
+`PimcoreAdminBundle`, so that editor is gone. The bundle now ships the **Studio API** plus the editor as
+**TypeScript sources** under [`assets/studio-ui/`](../assets/studio-ui) — deliberately *not* as a built
+module federation remote: shipping a built remote from a composer package means committing build output and
+registering a webpack entry point provider that hard-fails the whole Studio boot when the `entrypoints.json`
+is missing from a release. Instead, the consuming project compiles the sources into its **own** Studio UI
+plugin.
 
-That split is deliberate: shipping a built module federation remote from a composer package means committing
-build output and registering a webpack entry point provider that hard-fails the whole Studio boot when the
-`entrypoints.json` is missing from a release. Until a second project needs the editor, the project owns it.
+## Using the shipped editor
+
+Requirements: the project has a Studio UI plugin (module federation remote) with
+`@pimcore/studio-ui-bundle` pinned to the same minor as the installed composer bundles, plus `lodash` and
+`i18next` (both already pulled in by the SDK setup).
+
+1. Let the plugin build compile sources from the vendor directory. rsbuild only transpiles the project
+   root by default, so include the bundle path (`rsbuild.config.ts`):
+
+   ```ts
+   source: {
+     include: [path.resolve(__dirname, '../../vendor/basecom/pimcore-seo/assets/studio-ui')]
+   }
+   ```
+
+   TypeScript needs the same hint (`tsconfig.json`): add the path to `include`.
+
+2. Register the plugin (the project's `plugins.ts`):
+
+   ```ts
+   import { SeoPlugin } from '../../../vendor/basecom/pimcore-seo/assets/studio-ui'
+
+   export { SeoPlugin }
+   ```
+
+The module registers an `SEO` tab on object and variant editors, saves with the element's own
+Save draft / Save & Publish buttons (via the `data-object:editor:post-update` event) and follows the
+footer language switcher. Elements of classes without enabled integrators tell the user SEO is off.
+
+Custom integrators registered in the bundle config need their own editor — the shipped module renders a
+warning for integrator names it does not know.
 
 ## Endpoints
 

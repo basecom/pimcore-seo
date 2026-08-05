@@ -15,8 +15,9 @@ The last SEO Bundle for pimcore you'll ever need!
 - Fully backwards compatible if you're going to install this bundle within an existing pimcore instance!
 
 ## Editor UI
-Since Pimcore 2026.1 removed the Classic backend, this bundle no longer ships an editor. It provides a Studio
-API instead, which a Studio UI module in your project renders. See [Studio UI](docs/30_StudioUi.md).
+Since Pimcore 2026.1 removed the Classic backend, the editor is no longer a built UI shipped by the bundle.
+The bundle provides a Studio API plus the editor as TypeScript sources (`assets/studio-ui/`), which your
+project's Studio UI plugin compiles and registers. See [Studio UI](docs/30_StudioUi.md).
 
 ### Release Plan
 

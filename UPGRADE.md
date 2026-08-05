@@ -3,8 +3,9 @@
 ## Unreleased (Pimcore Studio)
 - **[BC BREAK]** The ExtJS/Classic editor UI has been removed. Pimcore 2026.1 dropped `PimcoreAdminBundle`,
   so `SeoBundle\Controller\Admin\MetaDataController`, `SeoBundle\EventListener\Admin\*` and everything under
-  `public/js` are gone. The bundle now ships a Studio API instead of an editor; the editor itself lives in the
-  Studio UI plugin of the consuming project. See [Studio UI](docs/30_StudioUi.md).
+  `public/js` are gone. The bundle now ships a Studio API plus the editor as TypeScript
+  sources under `assets/studio-ui/`, which the consuming project compiles into its own Studio UI plugin.
+  See [Studio UI](docs/30_StudioUi.md).
 - **[BC BREAK]** The four `/admin/seo/meta-data/*` routes are replaced by three Studio API endpoints under
   `%pimcore_studio_backend.url_prefix%/seo/meta-data`. Fetching the field definitions and the stored values is
   now a single request per element.
