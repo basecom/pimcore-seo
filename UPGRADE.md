@@ -1,5 +1,9 @@
 # Upgrade Notes
 
+## Unreleased
+- **[ENHANCEMENT]** Pimcore 2026.3 is supported. `pimcore/pimcore` and `pimcore/studio-backend-bundle` accept
+  `~2026.2.0 || ~2026.3.0`.
+
 ## Unreleased (Pimcore Studio)
 - **[BC BREAK]** The ExtJS/Classic editor UI has been removed. Pimcore 2026.1 dropped `PimcoreAdminBundle`,
   so `SeoBundle\Controller\Admin\MetaDataController`, `SeoBundle\EventListener\Admin\*` and everything under
