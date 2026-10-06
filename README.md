@@ -23,7 +23,7 @@ project's Studio UI plugin compiles and registers. See [Studio UI](docs/30_Studi
 
 | Release | Supported Pimcore Versions | Release Date | Maintained     | Branch |
 |---------|----------------------------|--------------|----------------|--------|
-| **4.x** | `2026.2`                   | -            | Feature Branch | master |
+| **4.x** | `2026.2`, `2026.3`         | -            | Feature Branch | master |
 | **3.x** | `11.0`, `12.x`             | 30.08.2023   | Bugfixes       | 3.x    |
 | **2.x** | `10.1` - `10.6`            | 14.10.2021   | Unsupported    | 2.x    |
 | **1.x** | `6.0` - `6.9`              | 27.04.2020   | Unsupported    | 1.x    |

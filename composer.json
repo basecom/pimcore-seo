@@ -35,8 +35,8 @@
     },
     "require": {
         "ext-dom": "*",
-        "pimcore/pimcore": "~2026.2.0",
-        "pimcore/studio-backend-bundle": "~2026.2.0",
+        "pimcore/pimcore": "~2026.2.0 || ~2026.3.0",
+        "pimcore/studio-backend-bundle": "~2026.2.0 || ~2026.3.0",
         "google/apiclient": "^2.12",
         "doctrine/orm": "^3.0"
     },
